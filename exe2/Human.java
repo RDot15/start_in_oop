@@ -5,16 +5,14 @@ public class Human extends Alive implements Effect{
     public int maxDistance;
     public int maxHeight;
 
-    public boolean flag = true;
+    public boolean flag;
 
-    public Human(String name) {
-        super(name);
-    }
 
-    public Human(String name, int maxDistance, int maxHeight, boolean flag) {
+    public Human(String name, int maxDistance, int maxHeight) {
         super(name);
         this.maxDistance = maxDistance;
         this.maxHeight = maxHeight;
+        this.flag=true;
     }
 
     public String toString() {
@@ -25,9 +23,9 @@ public class Human extends Alive implements Effect{
     public void run(int distance) {
         if (maxDistance<distance){
             flag=false;
-            System.out.println(" дистанция не пройдена ");
+
         }
-             else
+        if(flag)
             System.out.println( name + " прошел "  + distance);
 
     }
@@ -37,9 +35,13 @@ public class Human extends Alive implements Effect{
         if (maxHeight<height)
         {
             flag=false;
-            System.out.println(" не прыгнул ");
+
         }
-        else
+        if(flag)
             System.out.println(name + " прыгнул " + height);
+
+
+
     }
+
 }

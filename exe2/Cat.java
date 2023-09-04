@@ -3,43 +3,43 @@ package exe2;
 public class Cat extends Alive implements Effect {
     public int maxDistance;
     public int maxHeight;
-    public boolean flag = true;
+    public boolean flag;
 
-    public Cat(String name) {
-        super(name);
-    }
 
-    public Cat(String name, int maxDistance, int maxHeight, boolean flag) {
+    public Cat(String name, int maxDistance, int maxHeight) {
         super(name);
         this.maxDistance = maxDistance;
         this.maxHeight = maxHeight;
-
+        this.flag= true;
     }
 
     public String toString() {
         return String.format("name: %s, distance: %d" + "m, height: %d" + "m;", this.name, maxDistance, maxHeight);
     }
 
-    @Override
     public void run(int distance) {
         if (maxDistance<distance){
             flag=false;
-            System.out.println(" дистанция не пройдена ");
+
         }
-        else
+        if(flag)
             System.out.println( name + " прошел "  + distance);
 
     }
 
     @Override
     public void jump(int height) {
-        if (maxHeight < height) {
-            flag = false;
-            System.out.println(" не прыгнул ");
-        } else
+        if (maxHeight<height)
+        {
+            flag=false;
+
+        }
+        if(flag)
             System.out.println(name + " прыгнул " + height);
 
 
+
     }
+
 
 }
